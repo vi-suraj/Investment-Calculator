@@ -1,39 +1,24 @@
-import { useState } from "react";
-
-export default function UserInput() {
-  const [userInput, setUserInput] = useState({
-    initialInvestment: 10000,
-    annualInvestment: 1200,
-    expectedReturn: 6,
-    duration: 10,
-  });
-
-  function handleUserInput(indentifier, value) {
-    setUserInput((prevUserInput) => {
-      return { ...prevUserInput, [indentifier]: value };
-    });
-  }
-
+export default function UserInput({onSelectedInput,inputValue}) {
   return (
     <div id="user-input">
       <div className="input-group">
         <p>
           <label>Initial Investment</label>
-          <input type="number" required value={userInput.initialInvestment} onChange={(e) => handleUserInput("initialInvestment", e.targetvalue)} />
+          <input type="number" required value={inputValue.initialInvestment} onChange={(e) => onSelectedInput("initialInvestment", e.target.value)} />
         </p>
         <p>
           <label>Annual Investment</label>
-          <input type="number" required value={userInput.annualInvestment} onChange={(e) => handleUserInput("annualInvestment", e.targetvalue)} />
+          <input type="number" required value={inputValue.annualInvestment} onChange={(e) => onSelectedInput("annualInvestment", e.target.value)} />
         </p>
       </div>
       <div className="input-group">
         <p>
           <label>Expected Return</label>
-          <input type="number" required value={userInput.expectedReturn} onChange={(e) => handleUserInput("expectedReturn", e.targetvalue)} />
+          <input type="number" required value={inputValue.expectedReturn} onChange={(e) => onSelectedInput("expectedReturn", e.target.value)} />
         </p>
         <p>
           <label>Duration</label>
-          <input type="number" required value={userInput.duration} onChange={(e) => handleUserInput("duration", e.targetvalue)} />
+          <input type="number" required value={inputValue.duration} onChange={(e) => onSelectedInput("duration", e.target.value)} />
         </p>
       </div>
     </div>
